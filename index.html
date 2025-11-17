@@ -6,11 +6,11 @@
   <title>Módulo 1: Actividad 2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg: #0b1020;         /* Colores originales */
+      --bg: #0b1020;
       --card: #10172a;
       --muted: #c6cce2;
       --text: #e9ecf8;
@@ -38,71 +38,87 @@
 
     * { box-sizing: border-box; }
     html, body { height: 100%; }
+
     body {
       margin: 0;
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      /* Gradiente de fondo original */
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(124,156,255,.25), transparent 60%),
-                  radial-gradient(900px 500px at -10% 10%, rgba(34,197,94,.18), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(124,156,255,.25), transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, rgba(34,197,94,.18), transparent 55%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
       padding: 24px;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 1100px; /* igual que la portada de curso */
       margin: 0 auto;
     }
 
     .header {
-      padding: 28px 28px 20px;
-      text-align: center;
+      padding: 24px 24px 10px;
+      text-align: left;
     }
+
+    @media (max-width: 768px) {
+      .header {
+        text-align: center;
+      }
+    }
+
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 6px 12px;
       border-radius: 999px;
       background: rgba(124,156,255,.18);
       color: var(--primary);
       font-weight: 600;
-      font-size: .85rem;
+      font-size: .8rem;
       letter-spacing: .3px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
+
+    .badge i {
+      font-size: 0.85rem;
+    }
+
     .title {
       margin: 0 0 6px 0;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
       font-weight: 800;
-      color: var(--text); /* Título color texto normal */
+      color: var(--text);
     }
+
     .subtitle {
       margin: 0;
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
-    /* Instrucciones claras para el usuario */
     .instructions {
-      text-align: center;
-      margin: 20px 0;
-      padding: 15px;
+      text-align: left;
+      margin: 18px 0;
+      padding: 14px 16px;
       background: rgba(124,156,255,.08);
       border: 1px solid rgba(124,156,255,.15);
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       color: var(--muted);
     }
+
     .instructions i {
       color: var(--primary);
       margin-right: 8px;
     }
 
-    /* Barra de progreso */
     .progress-container {
-      margin: 25px 0;
-      padding: 0 10px;
+      margin: 18px 0 20px;
+      padding: 0 4px;
     }
+
     .progress-bar {
       height: 10px;
       background: rgba(124,156,255,.1);
@@ -110,6 +126,7 @@
       overflow: hidden;
       box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
+
     .progress-fill {
       height: 100%;
       width: 0%;
@@ -117,9 +134,10 @@
       border-radius: 999px;
       transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .progress-text {
-      text-align: center;
-      margin-top: 10px;
+      text-align: right;
+      margin-top: 8px;
       font-size: 0.9rem;
       color: var(--muted);
       font-weight: 500;
@@ -131,55 +149,67 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       overflow: hidden;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .step-section {
-      padding: 30px;
+      padding: 26px 26px 24px;
       border-bottom: 1px solid rgba(124,156,255,.12);
       position: relative;
-      transition: all 0.3s ease;
+      transition: background-color 0.25s ease, transform 0.25s ease;
       cursor: pointer;
     }
+
     .step-section:last-child {
       border-bottom: none;
     }
+
     .step-section:hover {
       background-color: rgba(124,156,255,.05);
     }
+
     .step-section.completed {
-        background-color: rgba(34, 197, 94, 0.05);
+      background-color: rgba(34,197,94,0.05);
     }
+
     .step-section.completed .step-number {
-        background: var(--success);
-        border-color: var(--success);
+      background: var(--success);
+      border-color: var(--success);
+      color: #fff;
     }
+
     .step-section.completed h3 {
-        color: var(--success);
-        text-decoration: line-through;
-        opacity: 0.8;
+      color: var(--success);
+      text-decoration: line-through;
+      opacity: 0.9;
     }
 
     .step-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .step-header {
+        flex-direction: column;
+      }
     }
     
     .step-number {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       background: transparent;
       border: 2px solid var(--primary);
       border-radius: 50%;
       color: var(--primary);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       flex-shrink: 0;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     .step-content {
@@ -187,25 +217,29 @@
     }
 
     .step-section h3 {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--primary);
-      margin: 0 0 12px 0;
-      transition: all 0.3s ease;
+      margin: 0 0 10px 0;
+      transition: color 0.3s ease;
     }
+
     .step-section p {
       color: var(--muted);
       font-size: 0.95rem;
-      margin: 0 0 20px 0;
+      margin: 0 0 18px 0;
     }
 
-    /* Checklist integrado y no intrusivo */
+    .step-section p strong {
+      color: var(--text);
+    }
+
     .step-checklist {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-top: 15px;
-      padding-top: 15px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px dashed rgba(124,156,255,.12);
     }
 
@@ -220,16 +254,20 @@
       position: relative;
       transition: all 0.2s ease;
       flex-shrink: 0;
+      background: transparent;
     }
+
     .step-checkbox:hover {
-        border-color: var(--primary);
-        transform: scale(1.05);
+      border-color: var(--primary);
+      transform: scale(1.05);
     }
+
     .step-checkbox:checked {
       background-color: var(--success);
       border-color: var(--success);
       animation: checkBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
+
     .step-checkbox:checked::after {
       content: '\f00c';
       font-family: 'Font Awesome 6 Free';
@@ -241,6 +279,7 @@
       transform: translate(-50%, -50%);
       font-size: 14px;
     }
+
     @keyframes checkBounce {
       0% { transform: scale(1); }
       50% { transform: scale(1.25); }
@@ -249,41 +288,50 @@
 
     .step-checklist label {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
       user-select: none;
       font-weight: 500;
     }
+
     .step-section.completed .step-checklist label {
-        color: var(--success);
+      color: var(--success);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       appearance: none;
       text-decoration: none;
       border: none; 
       cursor: pointer; 
       font-weight: 600; 
       letter-spacing: .2px;
-      padding: 12px 24px; 
+      padding: 10px 20px; 
       border-radius: var(--radius-sm);
       background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-      color: #fff; /* Texto blanco sobre botón azul */
+      color: #fff;
+      font-size: 0.9rem;
       transition: all 0.2s ease;
       box-shadow: 0 4px 15px var(--ring);
+      white-space: nowrap;
     }
+
+    .btn i {
+      font-size: 0.9rem;
+    }
+
     .btn:hover { 
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 7px 20px var(--ring);
-      filter: brightness(1.1);
+      filter: brightness(1.05);
     }
+
     .btn:active { transform: translateY(-1px); }
 
     .btn-container {
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     .video-wrapper {
@@ -294,9 +342,10 @@
       border-radius: var(--radius-md);
       border: 1px solid rgba(124,156,255,.12);
       max-width: 100%;
-      margin: 20px 0;
+      margin: 18px 0;
       box-shadow: 0 8px 24px rgba(0,0,0,.2);
     }
+
     .video-wrapper iframe {
       position: absolute;
       top: 0;
@@ -306,75 +355,85 @@
     }
 
     .padlet-center-wrapper {
-        text-align: center;
-        margin-top: 20px;
+      text-align: center;
+      margin-top: 18px;
     }
 
     .padlet-embed {
-        border:1px solid rgba(0,0,0,0.1);
-        border-radius:var(--radius-md);
-        box-sizing:border-box;
-        overflow:hidden;
-        position:relative;
-        width:100%;
-        max-width: 500px;
-        height:350px;
-        margin: 0 auto;
-        background:#F4F4F4;
-        box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--radius-md);
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 350px;
+      margin: 0 auto;
+      background: #F4F4F4;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
     }
 
     .info-card {
       background: rgba(124,156,255,.1);
       border-left: 4px solid var(--primary);
-      padding: 15px 18px;
+      padding: 14px 16px;
       border-radius: var(--radius-sm);
-      margin: 20px 0;
+      margin: 16px 0;
       display: flex;
       align-items: flex-start;
-      gap: 15px;
+      gap: 14px;
+      font-size: 0.9rem;
     }
+
     .info-card i {
       color: var(--primary);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-top: 2px;
+    }
+
+    .info-card strong {
+      color: var(--text);
     }
 
     .notification {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 24px;
+      right: 24px;
       background: var(--card);
       border: 1px solid var(--success);
       border-radius: var(--radius-md);
-      padding: 18px 22px;
+      padding: 14px 18px;
       box-shadow: var(--shadow);
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
       transform: translateY(150%);
       opacity: 0;
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
       z-index: 1000;
-      max-width: 350px;
+      max-width: 320px;
     }
+
     .notification.show {
       transform: translateY(0);
       opacity: 1;
     }
+
     .notification i {
       color: var(--success);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
     }
+
     .notification-content strong {
       display: block;
-      margin-bottom: 4px;
-      font-size: 1.05rem;
+      margin-bottom: 3px;
+      font-size: 0.98rem;
     }
+
     .notification-content p {
       margin: 0;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
   </style>
@@ -383,9 +442,13 @@
 
   <div class="container">
     <header class="header">
-      <div class="badge">Módulo 1: Tu dinero, tus reglas</div>
-      <h1 class="title">Actividad 2: Bienestar Financiero y Hábitos</h1>
-      <p class="subtitle">Sigue estos 3 pasos para completar la actividad y conectar con tu "porqué" financiero.</p>
+      <!-- Cambia estos textos para reutilizar la plantilla en otras actividades -->
+      <div class="badge">
+        <i class="fas fa-layer-group"></i>
+        Módulo 1 · Tu dinero, tus reglas
+      </div>
+      <h1 class="title">Actividad 2: Bienestar financiero y hábitos</h1>
+      <p class="subtitle">Sigue estos pasos para completar la actividad y conectar con tu "porqué" financiero.</p>
     </header>
 
     <div class="instructions">
@@ -394,27 +457,28 @@
     </div>
 
     <div class="progress-container">
-      <div class="progress-bar">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="progress-fill" id="progress-fill"></div>
       </div>
       <div class="progress-text" id="progress-text">Progreso: 0 de 3 pasos completados</div>
     </div>
 
     <section class="card">
+      <!-- Paso 1 -->
       <div class="step-section" id="step1">
         <div class="step-header">
           <div class="step-number">1</div>
           <div class="step-content">
             <h3>¿Qué tipo de gastador eres?</h3>
             <p>
-              ¡Comencemos con un poco de autoconocimiento! Responde este breve test para descubrir
-              cuál es tu perfil de gastador. No hay respuestas buenas o malas, es solo
+              Comencemos con un poco de autoconocimiento. Responde este breve test para descubrir
+              cuál es tu perfil de gastador. No hay respuestas buenas o malas; es solo
               para que empieces a reflexionar.
             </p>
             <div class="info-card">
               <i class="fas fa-lightbulb"></i>
               <div>
-                <strong>Consejo:</strong> Sé honesto contigo mismo. El objetivo es entender tus patrones
+                <strong>Consejo:</strong> sé honesto contigo mismo. El objetivo es entender tus patrones
                 actuales para poder mejorarlos.
               </div>
             </div>
@@ -426,7 +490,7 @@
                 rel="noopener noreferrer"
               >
                 <i class="fas fa-clipboard-question"></i>
-                Hacer el Mini-Test
+                Hacer el mini test
               </a>
             </div>
             <div class="step-checklist">
@@ -437,6 +501,7 @@
         </div>
       </div>
 
+      <!-- Paso 2 -->
       <div class="step-section" id="step2">
         <div class="step-header">
           <div class="step-number">2</div>
@@ -444,13 +509,13 @@
             <h3>¿Qué es la educación financiera y por qué importa?</h3>
             <p>
               Ahora que tienes una idea de tu perfil, mira este video. Olvídate de Wall Street y
-              términos complicados; esto se trata de ti y de cómo el dinero puede dejar
+              términos complicados: esto se trata de ti y de cómo el dinero puede dejar
               de ser una fuente de estrés.
             </p>
             <div class="video-wrapper">
               <iframe 
                 src="https://www.youtube.com/embed/49LKU4iQEEw?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=1" 
-                title="YouTube video player" 
+                title="Video sobre educación financiera" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen
@@ -459,7 +524,7 @@
             <div class="info-card">
               <i class="fas fa-info-circle"></i>
               <div>
-                <strong>Nota:</strong> Si el video no se reproduce correctamente, puedes 
+                <strong>Nota:</strong> si el video no se reproduce correctamente, puedes 
                 <a href="https://youtu.be/49LKU4iQEEw" target="_blank" rel="noopener noreferrer" style="color: var(--primary-strong); text-decoration: underline; font-weight: 600;">verlo directamente en YouTube aquí</a>.
               </div>
             </div>
@@ -471,20 +536,21 @@
         </div>
       </div>
 
+      <!-- Paso 3 -->
       <div class="step-section" id="step3">
         <div class="step-header">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h3>Foro de Reflexión</h3>
+            <h3>Foro de reflexión</h3>
             <p>
-              ¡Tu turno! Con lo que descubriste en el quiz y viste en el video,
-              pasa al foro y cuéntanos: 
-              <strong>"¿Qué creencia tenías sobre el dinero que ahora cuestionas?"</strong>
+              Ahora es tu turno. Con lo que descubriste en el test y lo que viste en el video,
+              pasa al foro y comparte tu respuesta a la pregunta:
+              <strong>“¿Qué creencia tenías sobre el dinero que ahora cuestionas?”</strong>
             </p>
             <div class="info-card">
               <i class="fas fa-star"></i>
               <div>
-                <strong>Tip:</strong> Comparte tus pensamientos de forma honesta. La reflexión
+                <strong>Tip:</strong> comparte tus pensamientos de forma honesta. La reflexión
                 compartida nos ayuda a crecer juntos.
               </div>
             </div>
@@ -503,7 +569,7 @@
     </section>
   </div>
 
-  <div class="notification" id="notification">
+  <div class="notification" id="notification" aria-live="polite">
     <i class="fas fa-check-circle"></i>
     <div class="notification-content">
       <strong>¡Paso completado!</strong>
@@ -512,23 +578,26 @@
   </div>
 
   <script>
-    const totalSteps = 3;
+    // Calcula los pasos en automático según los checkboxes (para reutilizar la plantilla)
+    const checkboxes = Array.from(document.querySelectorAll('.step-checkbox'));
+    const totalSteps = checkboxes.length;
     let completedSteps = 0;
+
     const notification = document.getElementById('notification');
     const progressFill = document.getElementById('progress-fill');
     const progressText = document.getElementById('progress-text');
+    const progressBar = document.querySelector('.progress-bar');
 
-    const step1Checkbox = document.getElementById('check-step1');
-    const step2Checkbox = document.getElementById('check-step2');
-    const step3Checkbox = document.getElementById('check-step3');
-
-    const step1Section = document.getElementById('step1');
-    const step2Section = document.getElementById('step2');
-    const step3Section = document.getElementById('step3');
+    const stepSections = [
+      document.getElementById('step1'),
+      document.getElementById('step2'),
+      document.getElementById('step3')
+    ];
 
     function updateProgress() {
       const percentage = (completedSteps / totalSteps) * 100;
       progressFill.style.width = `${percentage}%`;
+      progressBar.setAttribute('aria-valuenow', percentage.toFixed(0));
       progressText.textContent = `Progreso: ${completedSteps} de ${totalSteps} pasos completados`;
     }
 
@@ -561,16 +630,15 @@
       }
     }
 
-    // Event Listeners for checkboxes
-    step1Checkbox.addEventListener('change', () => handleStepCompletion(step1Checkbox, step1Section));
-    step2Checkbox.addEventListener('change', () => handleStepCompletion(step2Checkbox, step2Section));
-    step3Checkbox.addEventListener('change', () => handleStepCompletion(step3Checkbox, step3Section));
+    // Listeners
+    checkboxes.forEach((checkbox, index) => {
+      checkbox.addEventListener('change', () => handleStepCompletion(checkbox, stepSections[index]));
+    });
 
-    // Make the whole section clickable to toggle the checkbox
-    [step1Section, step2Section, step3Section].forEach(section => {
+    // Sección clickeable para alternar checkbox
+    stepSections.forEach(section => {
       section.addEventListener('click', (e) => {
-        // Prevent toggling if clicking on a link, button, or the checkbox itself
-        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.type === 'checkbox') {
+        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.type === 'checkbox' || e.target.tagName === 'IFRAME') {
           return;
         }
         const checkbox = section.querySelector('.step-checkbox');
@@ -579,7 +647,7 @@
       });
     });
 
-    // Fade-in animation on scroll
+    // Animación de entrada suave
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -597,10 +665,13 @@
     
     document.querySelectorAll('.step-section').forEach(section => {
       section.style.opacity = '0';
-      section.style.transform = 'translateY(20px)';
+      section.style.transform = 'translateY(16px)';
       section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(section);
     });
+
+    // Estado inicial
+    updateProgress();
   </script>
 </body>
 </html>
